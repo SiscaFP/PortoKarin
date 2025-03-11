@@ -112,6 +112,7 @@
         color: #fff;
         border-radius: 50%;
         transition: background-color 0.3s ease;
+        text-decoration: none;
       }
 
       .social-links .bxl-instagram:hover {
@@ -129,6 +130,13 @@
         color: #fff;
         border-radius: 50%;
         transition: background-color 0.3s ease;
+        text-decoration: none;
+      }
+
+      .social-links .bxl-tiktok:hover {
+        background: white;
+        color: black;
+        text-decoration: none;
       }
 
       .btn {
@@ -149,7 +157,7 @@
 
       .btn:hover {
         box-shadow: none;
-        background: #37ff0b;
+        background: #000000;
         transform: translateY(-2px);
       }
 
@@ -203,11 +211,24 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
 
-      .skill h3,
-      .skill h4 {
-        color: black; /* Mengubah warna teks menjadi hitam */
+      .skill h2 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #000;
       }
 
+      .tingkat h3 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #000;
+      }
+
+      .tingkat h4 {
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #000;
+        size: 1rem;
+      }
       .skill-bar {
         width: 100%; /* Full-width bars */
         background-color: #b4b4b4; /* Light gray background for the skill bar */
@@ -665,8 +686,8 @@
     </section>
 
     <!-- Gallery Section -->
-    <div class="gallery">
-      <h1 style="color: #000">GALERI</h1>
+    <section class="gallery">
+      <h1 style="color: #000; font-weight: 700">GALLERY</h1>
       <h5 style="color: #000">CIMB NIAGA (Octo Mobile)</h5>
       <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -679,7 +700,7 @@
           <img src="item/3.png" width="100%" onclick="openPopup(this)" />
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Popup for Gallery Images -->
     <div class="popup" id="popup" onclick="closePopup(event)">
