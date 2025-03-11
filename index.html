@@ -208,6 +208,16 @@
         color: black; /* Mengubah warna teks menjadi hitam */
       }
 
+      .skill-bar {
+        width: 100%; /* Full-width bars */
+        background-color: #b4b4b4; /* Light gray background for the skill bar */
+        border-radius: 10px; /* Rounded corners */
+        position: relative; /* Position for inner percentage */
+        margin-bottom: 15px; /* Space between bars */
+        height: 30px; /* Height of the skill bar */
+        overflow: hidden; /* Ensures the inner percentage does not overflow */
+      }
+
       .skill-bar div {
         height: 100%;
         text-align: center;
@@ -217,6 +227,7 @@
         background: #28a745;
         transition: width 0.8s ease;
         width: 0;
+        border-radius: 10px;
       }
 
       /* Experience Section */
@@ -317,31 +328,46 @@
         padding: 30px;
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
       }
 
       .swiper-wrapper {
-         display: flex;
-         transition: transform 0.5s ease;
-         align-items: center;
+        display: flex;
+        transition: transform 0.5s ease;
+        align-items: center;
         justify-content: center;
         overflow: hidden;
         max-width: 960px;
         margin: auto;
-}
+      }
 
-.swiper-slide {
-    flex: 0 0 auto; /* Prevents flex from growing/shrinking */
-    width: 100%;
-    max-width: 600px; /* Maximum width for the slide */
-    padding: 10px;
-}
+      .swiper-slide {
+        flex: 0 0 auto; /* Prevents flex from growing/shrinking */
+        width: 100%;
+        max-width: 600px; /* Maximum width for the slide */
+        padding: 10px;
+      }
 
-.swiper-slide img {
-    width: 100%;
-    height: auto; /* Keep the aspect ratio of the images */
-    border-radius: 8px; /* Optional: Add rounded corners */
-}
+      .swiper-slide img {
+        width: 100%;
+        height: auto; /* Keep the aspect ratio of the images */
+        border-radius: 8px; /* Optional: Add rounded corners */
+      }
+
+      .footer {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .footer a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
       /* Popup Styles (Gallery) */
       .popup {
@@ -643,15 +669,16 @@
       <h1 style="color: #000">GALERI</h1>
       <h5 style="color: #000">CIMB NIAGA (Octo Mobile)</h5>
       <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="item/1.png" width="100%" onclick="openPopup(this)" />
-    </div>
-    <div class="swiper-slide">
-        <img src="item/2.png" width="100%" onclick="openPopup(this)" />
-    </div>
-    <div class="swiper-slide">
-        <img src="item/3.png" width="100%" onclick="openPopup(this)" />
-    </div>
+        <div class="swiper-slide">
+          <img src="item/1.png" width="100%" onclick="openPopup(this)" />
+        </div>
+        <div class="swiper-slide">
+          <img src="item/2.png" width="100%" onclick="openPopup(this)" />
+        </div>
+        <div class="swiper-slide">
+          <img src="item/3.png" width="100%" onclick="openPopup(this)" />
+        </div>
+      </div>
     </div>
 
     <!-- Popup for Gallery Images -->
@@ -659,6 +686,10 @@
       <span class="close" onclick="closePopup(event)">×</span>
       <img id="popup-img" alt="Enlarged Gallery Image" />
     </div>
+
+    <footer class="footer">
+      <p>&copy; Made by : <a href="https://wa.link/y3bh9l">Kyulzy</a></p>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
     <script>
@@ -709,27 +740,27 @@
       }
 
       let currentIndex = 0; // Track the current slide index
-const slides = document.querySelectorAll(".swiper-slide"); // Adjust selector if necessary
+      const slides = document.querySelectorAll(".swiper-slide"); // Adjust selector if necessary
 
-function showSlide(index) {
-    // Show the given slide and hide the others
-    slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
-    });
-}
+      function showSlide(index) {
+        // Show the given slide and hide the others
+        slides.forEach((slide, i) => {
+          slide.style.display = i === index ? "block" : "none";
+        });
+      }
 
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length; // Move to next slide, loop back to start
-    showSlide(currentIndex);
-}
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length; // Move to next slide, loop back to start
+        showSlide(currentIndex);
+      }
 
-// Initialize the swiper
-function initSwiper() {
-    showSlide(currentIndex); // Show the first slide
-    setInterval(nextSlide, 3000); // Change slide every 3000 milliseconds (3 seconds)
-}
+      // Initialize the swiper
+      function initSwiper() {
+        showSlide(currentIndex); // Show the first slide
+        setInterval(nextSlide, 3000); // Change slide every 3000 milliseconds (3 seconds)
+      }
 
-document.addEventListener('DOMContentLoaded', initSwiper);
+      document.addEventListener("DOMContentLoaded", initSwiper);
     </script>
   </body>
 </html>
