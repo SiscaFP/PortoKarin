@@ -14,6 +14,10 @@
     />
     <style>
       /* General Styles */
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
         margin: 0;
@@ -31,32 +35,45 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.9);
         color: #4a4a4a;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         z-index: 1000;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        font-size: 1rem;
+        transition: background-color 0.3s;
       }
 
-      .header-left {
+      /* Navbar Styles */
+
+      .navbar-brand {
+        font-size: 1.5rem;
         font-weight: bold;
-        font-size: 1.2rem;
-        color: #6a5acd; /* Calming color */
+        color: #4a4a4a;
       }
 
-      .header-right a {
-        text-decoration: none;
-        color: #20b2aa; /* Calming and interesting color */
-        transition: color 0.3s ease;
-        font-weight: 500;
+      .navbar-nav .nav-link {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #4a4a4a;
+        margin-left: 1rem;
+        transition: color 0.3s;
       }
 
-      .header-right a:hover {
-        color: #2e8b57; /* Slightly darker shade for hover effect */
+      .navbar-nav .nav-link:hover {
+        color: #000;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%284, 4, 4, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      }
+
+      /* Smoth Transition for Navbar Background */
+      .navbar.scrolled {
+        background-color: #ffffff !important; /* Change the background when scrolled */
       }
 
       /* Profile Section */
@@ -142,7 +159,7 @@
       .btn {
         background: linear-gradient(45deg, #8a2be2, #dda0dd);
         border-radius: 5rem;
-        box-shadow: 0 0.5rem 1rem rgba(40, 167, 69, 0.4); /* Stronger shadow */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); /* Stronger shadow */
         font-size: 1rem;
         color: #fff;
         letter-spacing: 0.1rem;
@@ -157,7 +174,7 @@
 
       .btn:hover {
         box-shadow: none;
-        background: #000000;
+        background: #ffff;
         transform: translateY(-2px);
       }
 
@@ -351,6 +368,15 @@
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       }
 
+      .imgprof {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
       .swiper-wrapper {
         display: flex;
         transition: transform 0.5s ease;
@@ -372,6 +398,40 @@
         width: 100%;
         height: auto; /* Keep the aspect ratio of the images */
         border-radius: 8px; /* Optional: Add rounded corners */
+      }
+
+      .wa {
+        position: fixed;
+        bottom: 50px;
+        right: 30px;
+        background-color: #25d366;
+        color: #fff;
+        padding: 10px;
+        width: 50px;
+        border-radius: 50%;
+        text-decoration: none;
+        font-size: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+        z-index: 1000;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .wa:hover {
+        background-color: #ffff;
+        color: #25d366;
       }
 
       .footer {
@@ -426,14 +486,51 @@
   <body>
     <!-- Header Section -->
     <header class="header">
-      <div class="header-left">PORTOFOLIO</div>
-      <div class="header-right">
-        <a href="https://wa.me/6285794539018">Hubungi Saya</a>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-light header">
+        <a class="navbar-brand" href="#">PORTOFOLIO</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="#pendidikan" onclick="closeNavbar()"
+              >Pendidikan</a
+            >
+            <a class="nav-link" href="#skill" onclick="closeNavbar()">Skill</a>
+            <a class="nav-link" href="#pengalaman" onclick="closeNavbar()"
+              >Pengalaman</a
+            >
+            <a class="nav-link" href="#gallery" onclick="closeNavbar()"
+              >Gallery</a
+            >
+            <a
+              class="nav-link"
+              href="item/CV ASRI KARLINA.pdf"
+              target="_blank"
+              onclick="closeNavbar()"
+              >Download CV</a
+            >
+            <a
+              class="nav-link"
+              href="https://wa.me/6285794539018"
+              onclick="closeNavbar()"
+              >Hubungi Saya</a
+            >
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Profile Section -->
-    <div class="profile-container">
+    <div class="profile-container" id="profile">
       <img src="item/profil.jpg" alt="Profile Image" class="profile-img" />
       <div class="profile-info">
         <div class="profile-name">Asri Karlina</div>
@@ -463,8 +560,12 @@
       </div>
     </div>
 
+    <a href="https://wa.me/6285794539018" class="wa"
+      ><i class="bx bxl-whatsapp"></i
+    ></a>
+
     <!-- Education Section -->
-    <div class="pendidikan">
+    <div class="pendidikan" id="pendidikan">
       <h1>PENDIDIKAN</h1>
       <h2>SMK Maha Putra</h2>
       <h3>2018 - 2021</h3>
@@ -472,7 +573,7 @@
     </div>
 
     <!-- Skill Section -->
-    <div class="skill">
+    <div class="skill" id="skill">
       <h2>Keterampilan SPG dalam Berbagai Event</h2>
       <div class="table-responsive table-wrapper">
         <table class="table table-bordered table-striped">
@@ -607,7 +708,7 @@
     </div>
 
     <!-- Experience Section -->
-    <div class="header-pengalaman">
+    <div class="header-pengalaman" id="pengalaman">
       <h1>PENGALAMAN</h1>
     </div>
 
@@ -686,9 +787,20 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery">
-      <h1 style="color: #000; font-weight: 700">GALLERY</h1>
-      <h5 style="color: #000">CIMB NIAGA (Octo Mobile)</h5>
+    <section class="gallery" id="gallery">
+      <div>
+        <h1 style="color: #000; font-weight: 700">GALLERY</h1>
+      </div>
+      <div>
+        <h5 style="color: #000">GRID</h5>
+        <div class="imgprof">
+          <img src="item/wajah.png" width="50%" onclick="openPopup(this)" />
+          <img src="item/full body.jpg" width="50%" onclick="openPopup(this)" />
+        </div>
+      </div>
+      <div>
+        <h5 style="color: #000">CIMB NIAGA (Octo Mobile)</h5>
+      </div>
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="item/1.png" width="100%" onclick="openPopup(this)" />
@@ -712,8 +824,32 @@
       <p>&copy; Made by : <a href="https://wa.link/y3bh9l">Kyulzy</a></p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+      // Smooth scrolling and close navbar on link click
+      function closeNavbar() {
+        $(".navbar-collapse").collapse("hide");
+      }
+
+      // Change navbar style on scroll
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 50) {
+          $(".header").addClass("scrolled");
+        } else {
+          $(".header").removeClass("scrolled");
+        }
+      });
+
+      // Close navbar when clicking outside of it
+      $(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("show");
+        if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+          $(".navbar-toggler").click();
+        }
+      });
+
       // Fungsi untuk mengecek jika elemen terlihat di viewport
       function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
